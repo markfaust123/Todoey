@@ -59,6 +59,9 @@ class TasksScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: 20.0,
+              ),
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -66,6 +69,7 @@ class TasksScreen extends StatelessWidget {
                   topRight: Radius.circular(20.0),
                 ),
               ),
+              child: TasksList(),
             ),
           )
         ],
@@ -73,3 +77,70 @@ class TasksScreen extends StatelessWidget {
     );
   }
 }
+
+class TasksList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        TaskTile(),
+        TaskTile(),
+        TaskTile(),
+      ],
+    );
+  }
+}
+
+class TaskTile extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text('this is a task'),
+      trailing: Checkbox(
+        value: false,
+        onChanged: (condition) {
+          print('hi');
+        },
+      ),
+    );
+  }
+}
+
+// List<ListTile> getTasks() {
+//   List<ListTile> taskList = [];
+//   for (int i = 0; i < 2; i++) {
+//     taskList.add(
+//       ListTile(
+//         title: Text('this is a task'),
+//         trailing: Checkbox(
+//           value: false,
+//           onChanged: (condition) {
+//             print('hi');
+//           },
+//         ),
+//       ),
+//     );
+//   }
+//   return taskList;
+// }
+//
+// class Task extends StatelessWidget {
+//   String task = '';
+//   bool completed = false;
+//
+//   Task({required this.task, required this.completed});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return const Row(
+//       children: [
+//         Text(
+//           'task',
+//         ),
+//         Icon(
+//           Icons.square,
+//         ),
+//       ],
+//     );
+//   }
+// }
