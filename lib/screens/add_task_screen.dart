@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:todoey/models/task_data.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  String? taskName = '';
+  String taskName = '';
   void Function(dynamic)? addTaskScreenCallback = (dynamic) {};
 
   AddTaskScreen({required this.addTaskScreenCallback});
@@ -51,7 +52,9 @@ class AddTaskScreen extends StatelessWidget {
                 backgroundColor: Colors.lightBlueAccent,
               ),
               onPressed: () {
-                addTaskScreenCallback!(taskName);
+                // addTaskScreenCallback!(taskName);
+                Provider.of<TaskData>(context, listen: false).addTask(taskName);
+                Navigator.pop(context);
               },
               child: const Text(
                 'Add',
